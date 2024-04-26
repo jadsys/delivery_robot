@@ -1,0 +1,18 @@
+<launch>
+  <arg name="ENTITY_ID" default="megarover_01" />
+  <arg name="ENTITY_TYPE" default="megarover" />
+  <node pkg="delivery_robot" type="delivery_robot" name="delivery_robot_node_$(arg ENTITY_ID)" output="screen" >
+    <param name="entity_id" value="$(arg ENTITY_ID)" /> <!-- ロボットID -->
+    <param name="entity_type" value="$(arg ENTITY_TYPE)" /> <!-- ロボットの機種 -->
+    <param name="velocity_topic" value="rover_twist" /> <!-- 速度制御トピック名 -->
+    <param name="map_frame_id" value="map" />  <!-- 地図のフレームID -->
+    <remap to="/robot_bridge/$(arg ENTITY_ID)/navi_cmd"    from="/navi_cmd" />
+    <remap to="/robot_bridge/$(arg ENTITY_ID)/navi_cmdexe" from="/navi_cmdexe" />
+    <remap to="/robot_bridge/$(arg ENTITY_ID)/state"  from="/state" />
+    <remap to="/robot_bridge/$(arg ENTITY_ID)/robo_info"  from="/robo_info" />
+    <remap to="/robot_bridge/$(arg ENTITY_ID)/emg"    from="/emg" />
+    <remap to="/robot_bridge/$(arg ENTITY_ID)/emgexe" from="/emgexe" />
+    <remap to="/robot_bridge/$(arg ENTITY_ID)/layer_map_update_notify" from="/layer_map_update_notify" />
+    <rosparam file="$(find delivery_robot)/param/delivery_robot_node_$(arg ENTITY_ID)_L.yaml" command="load" />
+  </node>
+</launch>

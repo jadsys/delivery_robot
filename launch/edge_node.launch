@@ -1,0 +1,16 @@
+<launch>
+    <!-- Arguments -->
+    <arg name="robot01_prefix" default="megarover_01_sim"/>
+    <arg name="cost_map_topic" default="/target_map"/>
+    <arg name="correct_info_topic" default="/correction_info"/>
+    
+
+    <!-- 地図配信ノード -->
+    <node pkg="delivery_robot" name="edge_node_beta" type="edge_node_beta" args="$(arg robot01_prefix) megarover 155" output="screen">
+        <remap from="$(arg robot01_prefix)/map_original" to="$(arg cost_map_topic)" />
+        <remap from="correction_info" to="$(arg correct_info_topic)" />
+    </node>
+
+    <node pkg="rviz" type="rviz" args="-d '$(find delivery_robot)/rviz/edge_node_view.rviz'" name="edge_node_view_rviz" respawn="true" />
+    
+</launch>

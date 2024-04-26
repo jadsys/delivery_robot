@@ -1,0 +1,15 @@
+repositories:
+  vcstool:
+    type: git
+    url: https://github.com/jadsys/uoa_poc3_msgs.git
+    version: 2023年度成果物
+repositories:
+  vcstool:
+    type: git
+    url: https://github.com/jadsys/uoa_poc5_msgs.git
+    version: 2023年度成果物
+repositories:
+  vcstool:
+    type: git
+    url: https://github.com/jadsys/uoa_poc6_msgs.git
+    version: 2023年度成果物
